@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>base w/ tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Example CSS for messages */
+    ul.messages {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul.messages li {
+      margin-bottom: 4px;
+      padding: 4px;
+    }
+
+    /* Styles for success message */
+    ul.messages li.success {
+      background-color: #dff0d8;
+      color: #3c763d;
+    }
+
+    /* Styles for error message */
+    ul.messages li.error {
+      background-color: #f2dede;
+      color: #a94442;
+    }
+  </style>
+</head>
+
+<body>
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  
+  {% block content %}{% endblock content %}
+</body>
+
+</html>

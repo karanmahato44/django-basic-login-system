@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div >
+  <h2 class="border-b text-center mb-10">welcome <strong>{{ request.user }}</strong></h2>
+  <form action="{% url 'login_user' %}" method="post" class="flex flex-col w-80 justify-center items-center mx-auto">
+    {% csrf_token %}
+    <label for="username">username: </label><input class="border border-black mb-1 rounded" type="text" id="username" name="username" required>
+    <label for="password">password: </label><input class="border border-black mb-1 rounded" type="password" id="password" name="password" required>
+    <button type="submit" class="mt-5 text-white px-4 bg-green-400 rounded">login</button>
+  </form>
+</div>
+{% endblock content %}
